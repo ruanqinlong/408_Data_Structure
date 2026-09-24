@@ -28,7 +28,7 @@ struct Node{
 Node *pre = NULL;
 
 //对结点进行遍历，在符合条件的情况下修改其前驱和前驱结点的后继信息（是前驱结点的后继，不是当前结点的后继）
-void visit(Node *root){
+void visitCreate(Node *root){
     if(root->left==NULL){
         root->ltag = 1;
         root->left = pre;
@@ -40,13 +40,17 @@ void visit(Node *root){
     pre = root;
 }
 
+void visit(Node *root){
+    cout<<root->data<<" ";
+}
+
 
 
 //前中后序遍历的形式构建对应的线索二叉树
 void preOrder(Node *root){
     if(root==NULL) return;
 
-    visit(root);
+    visitCreate(root);
     if(root->ltag == 0)
         preOrder(root->left);
     if(root->rtag == 0)
@@ -56,7 +60,7 @@ void inOrder(Node *root){
     if(root==NULL) return;
 
     inOrder(root->left);
-    visit(root);
+    visitCreate(root);
     inOrder(root->right);
 }
 void postOrder(Node *root){
@@ -64,7 +68,7 @@ void postOrder(Node *root){
 
     postOrder(root->left);
     postOrder(root->right);
-    visit(root);
+    visitCreate(root);
 }
 
 //构造线索二叉树的主函数,并在此处处理最后一个元素的后继结点
@@ -104,6 +108,83 @@ void createPostThread(Node *root){
         }
     }
 }
+
+//使用前序线索二叉树，来寻找结点的前驱
+Node *prePred(Node *root){
+    // 使用前序线索二叉树寻找结点 p 的前驱
+    // 1. 若 p->ltag == 1，则 p->left 直接指向其前序前驱
+    //
+    // 2. 若 p->ltag == 0，则无法通过 p 自身直接得到前驱，
+    //    需要找到 p 的父结点 parent：
+    //    ① p 是 parent 的左孩子：
+    //       p 的前驱为 parent
+    //
+    //    ② p 是 parent 的右孩子，且 parent 没有左子树：
+    //       p 的前驱为 parent
+    //
+    //    ③ p 是 parent 的右孩子，且 parent 有左子树：
+    //       p 的前驱为 parent 左子树中最后一个被前序遍历的结点
+    //
+    // 3. 若 p 是整棵树的根结点，则 p 没有前序前驱
+    //
+    // 注意：当前 Node 结构体没有 parent 父指针，
+    // 因此在 ltag == 0 时不能仅凭 p 直接找到其父结点。
+    // 若要完整实现，需要增加父指针，或从根结点重新查找父结点。
+    // 本代码暂不实现 prePred()。
+}
+Node *preSucc(Node *root){
+
+    // 如果 rtag == 0，right 仍然是右孩子指针
+    if(root->rtag == 0){
+        // 有左孩子：前序遍历下，左孩子就是后继
+        if(root->ltag == 0)
+            return root->left;
+        // 没有左孩子：进入右孩子
+        else
+            return root->right;
+    }else{
+        // rtag == 1，right 已经是后继线索
+        return root->right;
+    }
+}
+
+Node *inPred(Node *root){
+
+}
+Node *inSucc(Node *root){
+    
+}
+
+Node *postPred(Node *root){
+    if(root->ltag) return root->left;
+    if(root->rtag==0) return root->right;
+    else return root->left;
+}
+Node *postSucc(Node *root){
+    // 使用后序线索二叉树寻找结点 p 的后继
+    //
+    // 1. 若 p->rtag == 1，则 p->right 直接指向其后序后继
+    //
+    // 2. 若 p->rtag == 0，则无法仅通过 p 自身直接得到后继，
+    //    需要找到 p 的父结点 parent：
+    //
+    //    ① p 是 parent 的右孩子：
+    //       p 的后继为 parent
+    //
+    //    ② p 是 parent 的左孩子，且 parent 没有右子树：
+    //       p 的后继为 parent
+    //
+    //    ③ p 是 parent 的左孩子，且 parent 有右子树：
+    //       p 的后继为 parent 右子树中第一个被后序遍历的结点
+    //
+    // 3. 若 p 是整棵树的根结点，则 p 没有后序后继
+    //
+    // 注意：当前 Node 结构体没有 parent 父指针，
+    // 因此某些情况下无法仅凭 p 找到其后序后继。
+    // 若要完整实现，需要增加父指针，或从根结点重新寻找父结点。
+    // 本代码暂不实现 postSucc()。
+}
+
 
 int main(){
 
