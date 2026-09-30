@@ -17,8 +17,8 @@ struct VertexNode{
 
 struct Graph{
     VertexNode vertices[MAX_SIZE];
-    int vertexCount;
-    int edgeCount;
+    int vertexCount;//点数量
+    int edgeCount;//边数量
 };
 
 void init(Graph *g){
