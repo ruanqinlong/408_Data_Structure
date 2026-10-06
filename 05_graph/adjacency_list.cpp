@@ -6,8 +6,8 @@ using namespace std;
 const int MAX_SIZE = 100;
 
 struct EdgeNode{
-    int adjVertex;//相邻点下标
-    EdgeNode *next;//下一个相邻点指针
+    int adjVertex;   // 当前边结点对应的邻接顶点下标
+    EdgeNode *next;  // 指向下一个边结点
 };
 
 struct VertexNode{
