@@ -50,9 +50,25 @@ bool isAdjacent(Graph *g, int v1, int v2){
     }
     return false;
 }
+// 添加无向边
+bool addEdge(Graph *g,int v1,int v2){
+    if(v1<0 || v1>=g->vertexCount ||
+       v2<0 || v2>=g->vertexCount) return false;
 
-//添加边
-bool addEdge(Graph *g, int v1, int v2);
+    EdgeNode *e1 = new EdgeNode;
+    e1->adjVertex = v2;
+    e1->next = g->vertices[v1].firstEdge;
+    g->vertices[v1].firstEdge = e1;
+
+    EdgeNode *e2 = new EdgeNode;
+    e2->adjVertex = v1;
+    e2->next = g->vertices[v2].firstEdge;
+    g->vertices[v2].firstEdge = e2;
+
+    g->edgeCount++;
+
+    return true;
+}
 
 //获取度
 int getDegree(Graph *g, int v);

@@ -1,6 +1,6 @@
 {
     "code-runner.executorMap": {
-        "cpp": "cd $workspaceRoot && C:\\msys64\\ucrt64\\bin\\g++.exe \"$fullFileName\" -o \"$workspaceRoot\\08_build\\$fileNameWithoutExt.exe\" && \"$workspaceRoot\\08_build\\$fileNameWithoutExt.exe\""
+        "cpp": "cd \"$workspaceRoot\"; & C:\\msys64\\ucrt64\\bin\\g++.exe \"$fullFileName\" -o \"$workspaceRoot\\08_build\\$fileNameWithoutExt.exe\"; if ($?) { & \"$workspaceRoot\\08_build\\$fileNameWithoutExt.exe\" }"
     },
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true
