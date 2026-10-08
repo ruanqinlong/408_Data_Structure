@@ -36,14 +36,14 @@ bool isAdjacent(Graph *g,int v1,int v2){
 }
 
 //增加边
-bool addEdge(Graph *g,int v1,int v2){
+bool addEdge(Graph *g,int v1,int v2,int weight){
     if(v1 < 0 || v1 >= g->vertexCount ||
         v2 < 0 || v2 >= g->vertexCount){
         return false;
     }
     if(isAdjacent(g,v1,v2)) return false;
-    g->edges[v1][v2] = 1;
-    g->edges[v2][v1] = 1;
+    g->edges[v1][v2] = weight;
+    g->edges[v2][v1] = weight;
     g->edgeCount++;
     return true;
 }
@@ -74,11 +74,11 @@ int main(){
     addVertex(&g, 'D');
 
     // 添加边
-    addEdge(&g, 0, 1);  // A-B
-    addEdge(&g, 0, 2);  // A-C
-    addEdge(&g, 1, 2);  // B-C
-    addEdge(&g, 1, 3);  // B-D
-    addEdge(&g, 2, 3);  // C-D
+    addEdge(&g, 0, 1,0);  // A-B
+    addEdge(&g, 0, 2,0);  // A-C
+    addEdge(&g, 1, 2,0);  // B-C
+    addEdge(&g, 1, 3,0);  // B-D
+    addEdge(&g, 2, 3,0);  // C-D
 
     // 输出基本信息
     cout << "顶点数：" << g.vertexCount << endl;

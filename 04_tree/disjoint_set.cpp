@@ -27,6 +27,11 @@ int findRoot(int set[], int x){
     return x;
 }
 
+//判断x y是否连通
+bool isConnected(int set[],int x,int y){
+    return findRoot(set,x)==findRoot(set,y);
+}
+
 // 合并两个集合
 // root1和root2必须是两个集合的根结点
 bool unionSet(int set[], int root1, int root2){

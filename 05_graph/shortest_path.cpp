@@ -1,5 +1,11 @@
 // 最短路径：BFS、Dijkstra、Floyd
-int main(int argc, char const *argv[])
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+
+int main()
 {
     
     return 0;
