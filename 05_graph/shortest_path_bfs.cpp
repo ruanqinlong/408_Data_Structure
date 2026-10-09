@@ -1,8 +1,7 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
-// 最短路径：BFS、Dijkstra、Floyd
+// 最短路径：BFS,使用邻接表法实现
 
 const int MAX_SIZE = 100;
 
