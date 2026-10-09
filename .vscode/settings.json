@@ -6,5 +6,6 @@
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true,
     "files.encoding": "utf8",
-    "terminal.integrated.defaultProfile.windows": "PowerShell"
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "liveloc.showTokens": false
 }
