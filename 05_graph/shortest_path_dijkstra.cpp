@@ -1,4 +1,4 @@
-// Dijkstra最短路径算法，使用邻接矩阵实现
+// Dijkstra最短路径算法，使用邻接矩阵实现，求带权图的单源最短路径，时间复杂度O(V^2)
 #include<bits/stdc++.h>
 using namespace std;
 

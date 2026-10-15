@@ -1,7 +1,7 @@
+// 最短路径：BFS,使用邻接表法实现，求无权图的单源最短路径，时间复杂度O(V^2)或O(V+E) 
 #include <bits/stdc++.h>
 using namespace std;
 
-// 最短路径：BFS,使用邻接表法实现
 
 const int MAX_SIZE = 100;
 
