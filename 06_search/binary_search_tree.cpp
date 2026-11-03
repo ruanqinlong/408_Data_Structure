@@ -110,8 +110,7 @@ bool delete_tree(TreeNode *&t, int key) {
 
             if (t->left != nullptr) {
                 t = t->left;
-            }
-            else {
+            }else {
                 t = t->right;
             }
 
