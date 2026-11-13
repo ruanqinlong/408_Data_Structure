@@ -9,7 +9,7 @@ int main() {
 
     a[1] = 2;
     a[2] = 2;
-
+    
     for (int i = 3; i <= n; i++) {
         a[i] = a[i - 1] + a[i - 2];
     }
